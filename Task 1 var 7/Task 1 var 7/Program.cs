@@ -16,6 +16,16 @@ namespace Task_1_var_7
 
           int[] numbers = new int[n];
 
+          Console.WriteLine("Введите числа:");
+          string input = Console.ReadLine();
+          string[] parts = input.Split(' ');
+
+          for (int i = 0; i < n; i++)
+          {
+              numbers[i] = int.Parse(parts[i]);
+          }
+
+
         }
     }
 }
