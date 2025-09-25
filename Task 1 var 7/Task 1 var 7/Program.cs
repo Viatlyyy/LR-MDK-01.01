@@ -38,7 +38,12 @@ namespace Task_1_var_7
                     min = numbers[i];
                 }
             }
+            int difference = max - min;
+            Console.WriteLine("Максимальное число: " + max);
+            Console.WriteLine("Минимальное число: " + min);
+            Console.WriteLine("Разница между максимальным и минимальным: " + difference);
 
+            Console.ReadKey();
         }
     }
 }
