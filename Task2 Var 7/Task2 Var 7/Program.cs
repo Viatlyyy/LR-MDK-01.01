@@ -29,7 +29,18 @@ namespace Task2_Var_7
                     foundNumbers.Add(number);
                 }
             }
-
+            Console.Write("[");
+            for (int i = 0; i < foundNumbers.Count; i++)
+            {
+                Console.Write(foundNumbers[i]);
+                if (i < foundNumbers.Count - 1)
+                {
+                    Console.Write(", ");
+                }
+            }
+            Console.WriteLine("]");
+            Console.WriteLine("Найдено " + foundNumbers.Count + " чисел, оканчивающихся на 4.");
+            Console.ReadKey();
         }
     }
 }
