@@ -18,7 +18,17 @@ namespace Task2_Var_7
             {
                 numbers[i] = random.Next(-2000, 2001);
             }
-
+            List<int> foundNumbers = new List<int>();
+            
+            for (int i = 0; i < array; i++)
+            {
+                int number = numbers[i];
+                int lastDigit = Math.Abs(number % 10);
+                if (lastDigit == 4)
+                {
+                    foundNumbers.Add(number);
+                }
+            }
 
         }
     }
