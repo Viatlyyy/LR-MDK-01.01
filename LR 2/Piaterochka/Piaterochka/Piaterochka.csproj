@@ -47,6 +47,7 @@
     <Compile Include="CategoryRequestStep.cs" />
     <Compile Include="DataFetchingStep.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductSearchStep.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
