@@ -146,3 +146,13 @@ public class SimpleLibrary
         Console.WriteLine($"Название книги (Номер: {numberToEdit}) успешно изменено на '{newTitle}'.");
     }
 }
+public class Program
+{
+    public static void Main(string[] args)
+    {
+
+        SimpleLibrary mySimpleLibrary = new SimpleLibrary();
+
+        mySimpleLibrary.Run();
+    }
+}
