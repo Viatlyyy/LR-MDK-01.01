@@ -58,7 +58,7 @@ public class SimpleLibrary
 
         if (string.IsNullOrWhiteSpace(newTitle))
         {
-            Console.WriteLine("Название книги не может быть пустым!");
+            Console.WriteLine("Именование книги не может быть пустым!");
             return;
         }
 
