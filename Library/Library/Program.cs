@@ -88,4 +88,61 @@ public class SimpleLibrary
             Console.WriteLine($"Номер: {bookNumbers[i]} | Название: {bookTitles[i]}");
         }
     }
+    private void EditBook()
+    {
+        Console.WriteLine("--- Изменение названия книги ---");
+
+        ShowBooks();
+
+
+        if (bookTitles.Count == 0)
+        {
+            return;
+        }
+
+        Console.Write("Введите номер книги, которую хотите изменить: ");
+        string inputNumber = Console.ReadLine();
+
+
+        if (!int.TryParse(inputNumber, out int numberToEdit))
+        {
+            Console.WriteLine("Ошибка: Введите корректный номер книги (число).");
+            return;
+        }
+
+
+        int indexToEdit = -1;
+        for (int i = 0; i < bookNumbers.Count; i++)
+        {
+            if (bookNumbers[i] == numberToEdit)
+            {
+                indexToEdit = i;
+                break;
+            }
+        }
+
+
+        if (indexToEdit == -1)
+        {
+            Console.WriteLine($"Книга с номером {numberToEdit} не найдена.");
+            return;
+        }
+
+
+        Console.WriteLine($"Текущее название: {bookTitles[indexToEdit]}");
+        Console.Write("Введите новое название: ");
+        string newTitle = Console.ReadLine();
+
+
+        if (string.IsNullOrWhiteSpace(newTitle))
+        {
+            Console.WriteLine("Новое название не может быть пустым. Изменение отменено.");
+            return;
+        }
+
+
+        bookTitles[indexToEdit] = newTitle;
+
+        Console.WriteLine($"Название книги (Номер: {numberToEdit}) успешно изменено на '{newTitle}'.");
+    }
 }
