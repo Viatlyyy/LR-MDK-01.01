@@ -49,4 +49,25 @@ public class SimpleLibrary
             }
         }
     }
+    private void AddBook()
+    {
+        Console.WriteLine("--- Добавление книги ---");
+        Console.Write("Введите название книги: ");
+        string newTitle = Console.ReadLine();
+
+
+        if (string.IsNullOrWhiteSpace(newTitle))
+        {
+            Console.WriteLine("Название книги не может быть пустым!");
+            return;
+        }
+
+
+        bookTitles.Add(newTitle);
+
+        bookNumbers.Add(nextNumber);
+
+        Console.WriteLine($"Книга '{newTitle}' добавлена под номером {nextNumber}.");
+        nextNumber++;
+    }
 }
