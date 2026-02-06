@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-
 namespace TestFileStorage
 {
     public interface IUserInterface
     {
         List<User> Load();
-        string Registration(User u);
-        bool CheckExistsUser(string login);
+        bool Authorize(string log, string pass);
+        bool CheckUser(string log);
+        bool Registration(User u);
     }
-    
 }

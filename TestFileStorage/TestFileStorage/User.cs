@@ -10,10 +10,12 @@
             login_ = login;
             password_ = password;
         }
+
         public string Login
         {
             get { return login_; }
         }
+
         public string Password
         {
             get { return password_; }

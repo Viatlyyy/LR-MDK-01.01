@@ -1,44 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestFileStorage
 {
     public class FileUserStorage : IUserInterface
     {
+        public bool Authorize(string log, string pass)
+        {
+            List<User> identification = Load();
+
+            User user = new User(log, pass);
+
+            return Contains(identification, user);
+        }
+
         public List<User> Load()
         {
-            List<User> allUser = new List<User>();
-            string path = @"D:\repo Andrianov\TestFileStorage\info.txt";
-            StreamReader SR = new StreamReader(path);
+            List<User> allUsers = new List<User>();
+            string path = @".\info.txt";
+            StreamReader sr = new StreamReader(path);
 
             string line;
 
-            while((line = SR.ReadLine()) != null)
+            while ((line = sr.ReadLine()) != null)
             {
                 string[] lines = line.Split('-');
-                allUser.Add(new User(lines[0], lines[1]));
+                allUsers.Add(new User(lines[0], lines[1]));
             }
-            return allUser;
+
+            sr.Close();
+
+            return allUsers;
         }
 
-        public string CheckExistsUser(string login)
+        public bool CheckUser(string log)
         {
-            List<User> allUser = Load();
-            string b = null;
-            foreach (User a in allUser)
-           
+            List<User> identification = Load();
+
+            foreach(User u in identification)
             {
-                if (a.Login != b)
+                if(u.Login == log)
                 {
                     return true;
                 }
             }
-           
+
+            return false;
+        }
+
+        private bool Contains(List<User> users, User user)
+        {
+            foreach (User u in users)
+            {
+                if (user.Login == u.Login && u.Password == user.Password)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool Registration(User u)
+        {
+            string path = @".\info.txt";
+            StreamWriter sw = new StreamWriter(path, true);
+            sw.WriteLine(u.Login + "-" + u.Password);
+            sw.Close();
+            return true;
         }
     }
 }

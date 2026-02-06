@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35818.85 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFileStorage", "TestFileStorage\TestFileStorage.csproj", "{971C60B9-D22B-4FD9-B3BF-7D9ABD4D6B4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewTaskWinForms", "NewTaskWinForms\NewTaskWinForms.csproj", "{7C8C1898-B860-46EE-9913-0BFBF09B6C30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{971C60B9-D22B-4FD9-B3BF-7D9ABD4D6B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{971C60B9-D22B-4FD9-B3BF-7D9ABD4D6B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{971C60B9-D22B-4FD9-B3BF-7D9ABD4D6B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{971C60B9-D22B-4FD9-B3BF-7D9ABD4D6B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C8C1898-B860-46EE-9913-0BFBF09B6C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C8C1898-B860-46EE-9913-0BFBF09B6C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C8C1898-B860-46EE-9913-0BFBF09B6C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C8C1898-B860-46EE-9913-0BFBF09B6C30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DF5A17A5-DB64-4F1F-B121-EC000D0613D8}
+		SolutionGuid = {1696D0C0-828A-420E-8532-0E645DA3B80B}
 	EndGlobalSection
 EndGlobal

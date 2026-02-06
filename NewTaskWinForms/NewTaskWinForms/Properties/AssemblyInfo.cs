@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("TestFileStorage")]
+[assembly: AssemblyTitle("NewTaskWinForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TestFileStorage")]
+[assembly: AssemblyProduct("NewTaskWinForms")]
 [assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("971c60b9-d22b-4fd9-b3bf-7d9abd4d6b4a")]
+[assembly: Guid("7c8c1898-b860-46ee-9913-0bfbf09b6c30")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
