@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassLibrary.Model_Views
+{
+   public class User
+    {
+        private string login_;
+        private string password_;
+        private string name_;
+
+        public User (string login, string password, string name)
+        {
+            login_ = login;
+            password_ = password;
+            name_ = name;
+        }
+
+
+        public string Login
+        {
+            get { return login_; }
+        }
+
+        public string Name
+        {
+            get { return name_; }
+        }
+
+        public string Password
+        {
+            get { return password_; }
+        }
+    }
+}
+
