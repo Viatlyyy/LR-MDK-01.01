@@ -10,5 +10,7 @@ namespace ClassLibrary.Views
   public interface IUsersView
     {
        void ShowUsers(List <User> allUsers_);
+
+        List<User> GetSelection();
     }
 }

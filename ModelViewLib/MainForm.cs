@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary.Model_Views;
+using ClassLibrary.Models;
 using ClassLibrary.Presenters;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,11 @@ namespace ModelViewLib
             userTable.Dock = DockStyle.Top;
 
             UserPresenter userPresenter = new UserPresenter(new MemoryUsersModel(), userTable);
+            
+        }
+
+        private void RemoveToolStripButton_Click(object sender, EventArgs e)
+        {
             
         }
     }
