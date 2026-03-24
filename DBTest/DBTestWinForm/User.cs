@@ -13,11 +13,9 @@ namespace DBTestWinForm
         public string Login { get; set; }
         [DisplayName("Пароль")]
         public string Password { get; set; }
-        [DisplayName("Возраст")]
-        public int Age { get; set; }
         [DisplayName("Имя")]
         public string Name { get; set; }
-        [DisplayName("Фамилия")]
-        public string LastName { get; set; }
+        [DisplayName("Возраст")]
+        public int Age { get; set; }
     }
 }

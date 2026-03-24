@@ -1,6 +1,6 @@
 ﻿namespace DBTestWinForm
 {
-    partial class Form1
+    partial class MainFrom
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -65,21 +65,21 @@
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(283, 310);
+            this.ClearButton.Location = new System.Drawing.Point(276, 310);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(90, 45);
-            this.ClearButton.TabIndex = 3;
+            this.ClearButton.Size = new System.Drawing.Size(105, 45);
+            this.ClearButton.TabIndex = 1;
             this.ClearButton.Text = "Очистить";
             this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.button1_Click);
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.dataGridView);
             this.Name = "Form1";

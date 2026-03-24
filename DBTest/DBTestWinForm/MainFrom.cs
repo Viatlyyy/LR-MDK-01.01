@@ -12,16 +12,16 @@ using Npgsql;
 
 namespace DBTestWinForm
 {
-    public partial class Form1: Form
+    public partial class MainFrom: Form
     {
-        PgUsersLoader loader = new PgUsersLoader();
+        PgUsersLoader loader_ = new PgUsersLoader();
 
-        public Form1()
+        public MainFrom()
         {                                              
             InitializeComponent();
             dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            BindingList<User> users = loader.Load();
+            BindingList<User> users = loader_.Load();
             dataGridView.DataSource = users;
         }
 
@@ -29,22 +29,22 @@ namespace DBTestWinForm
         {
             DataGridViewRow row = dataGridView.SelectedRows[0];
             User user = row.DataBoundItem as User;
-            loader.DeleteSelectedUser(user.Login);
+            loader_.DeleteSelectedUser(user.Login);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ClearButton_Click(object sender, EventArgs e)
         {
-            DialogResult r =  MessageBox.Show("Вы действительно хотите удалить пользователя?", "Внимание", MessageBoxButtons.OKCancel);
-            if (r == DialogResult.OK)
+            var result = MessageBox.Show("Вы действительно хотите очистить всю таблицу?", "Внимание!", MessageBoxButtons.OKCancel);
+            if(result == DialogResult.OK)
             {
-                loader.ClearUsers();
+                loader_.ClearUser();
             }
-            
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            
+            AddForm additionForm = new AddForm(loader_);
+            additionForm.Show();
         }
     }
 }

@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,16 +13,15 @@ namespace DBTestWinForm
 {
     public class PgUsersLoader
     {
+        private const string connectSetting = "Host=192.168.1.48;Username=st50-6;Password=506;Database=Test";
         private BindingList<User> allUsers_ = new BindingList<User>();
-        private const string connectSetting = "Host=192.168.1.48;Username=st50-4;Password=504;Database=MDK01.01_Kuvaldaev";
         public BindingList<User> Load() 
         {
             try
-            {
-
+            {                
                 var con = new NpgsqlConnection(connectSetting);
                 con.Open();
-                var sql = "SELECT login, password, age, name, last_name From myusers";
+                var sql = "SELECT login, password, name, age  From quarty";
                 var cmd = new NpgsqlCommand(sql, con);
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -29,9 +30,8 @@ namespace DBTestWinForm
                     {
                         Login = reader.GetString(0),
                         Password = reader.GetString(1),
-                        Age = reader.GetInt32(2),
-                        Name = reader.GetString(3),
-                        LastName = reader.GetString(4)
+                        Name = reader.GetString(2),
+                        Age = reader.GetInt32(3)
                     };
                     allUsers_.Add(user);
                 }
@@ -51,23 +51,22 @@ namespace DBTestWinForm
                 bool result = false;
                 var con = new NpgsqlConnection(connectSetting);
                 con.Open();
-                var sql = "DELETE FROM myusers Where login = @login";
+                var sql = "DELETE FROM quarty Where login = @login";
                 var cmd = new NpgsqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@login", Login);
                 int execute = cmd.ExecuteNonQuery();
                 if (execute > 0)
                 {
                     result = true;
-                    
-                }
-                for (int i = 0; i < allUsers_.Count; i++)
-                {
-                    if (allUsers_[i].Login == Login)
+                    for (int i = 0; i < allUsers_.Count; i++)
                     {
-                        allUsers_.RemoveAt(i);
-                        i--;
+                        if (allUsers_[i].Login == Login)
+                        {
+                            allUsers_.RemoveAt(i);
+                            i--;
+                        }
                     }
-                }
+                }                              
                 return result;
             }
             catch(NpgsqlException exception) 
@@ -77,36 +76,57 @@ namespace DBTestWinForm
             }
         }
 
-        public bool ClearUsers()
+        public bool ClearUser()
         {
-           
-            bool result = false;
-            var con = new NpgsqlConnection(connectSetting);
-            var sql = "DELETE FROM myusers";
-            con.Open();
-            var cmd = new NpgsqlCommand(sql, con);
-            int execute = cmd.ExecuteNonQuery();
-            if (execute > 0)
+            try
             {
-                result = true;
+                bool result = false;
+                var con = new NpgsqlConnection(connectSetting);
+                con.Open();
+                var sql = "DELETE FROM quarty";
+                var cmd = new NpgsqlCommand(sql, con);
+                int execute = cmd.ExecuteNonQuery();
+                if (execute > 0)
+                {
+                    result = true;
+                    allUsers_.Clear();
+                }                
+                return result;                
             }
-            allUsers_.Clear();
-            return result;
-        
+            catch (NpgsqlException exception)
+            {
+                MessageBox.Show($"Ошибка: {exception.Message}");
+                return false;
+            }
         }
-
-        public bool AddUser()
+        public bool AddUser(User u)
         {
-            bool result = false;
-            var con = new NpgsqlConnection(connectSetting);
-            var sql = "INSERT INTO myusers (login, password, age, name, lastname) VALUES(login, password, age, name, lastname)";
-            con.Open();
-            var cmd = new NpgsqlCommand(sql, con);
-            int execute = cmd.ExecuteNonQuery();
-            if (execute > 0)
+            try
             {
-                result = true;
+                bool result = false;
+                var con = new NpgsqlConnection(connectSetting);
+                con.Open();
+                var sql = "INSERT INTO quarty(login, password, name, age) VALUES (@login, @password, @name, @age)";
+                var cmd = new NpgsqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@login", u.Login);
+                cmd.Parameters.AddWithValue("@password", u.Password);
+                cmd.Parameters.AddWithValue("@name", u.Name);
+                cmd.Parameters.AddWithValue("@age", u.Age);
+                int execute = cmd.ExecuteNonQuery();
+                if (execute > 0)
+                {
+                    result = true;
+                    allUsers_.Add(u);
+                }                
+                return result;
             }
+
+            catch (NpgsqlException exception)
+            {
+                MessageBox.Show($"Ошибка: {exception.Message}");
+                return false;
+            }
+
         }
     }
 }
