@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Npgsql;
 
 
 namespace DBTestWinForm
 {
     public partial class MainFrom: Form
     {
-        PgUsersLoader loader_ = new PgUsersLoader();
-
+        private PgUsersLoader loader_ = new PgUsersLoader();
         public MainFrom()
         {                                              
             InitializeComponent();
@@ -45,6 +37,15 @@ namespace DBTestWinForm
         {
             AddForm additionForm = new AddForm(loader_);
             additionForm.Show();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView.SelectedRows[0];
+            User selectedUser = row.DataBoundItem as User;
+            AddForm addEditForm = new AddForm(loader_);
+            addEditForm.SetUser(selectedUser);
+            addEditForm.Show();
         }
     }
 }
